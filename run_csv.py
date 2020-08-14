@@ -9,8 +9,7 @@ with open('lis.csv', newline='') as fileImport:
 bCandidat = []
 bCandidat.append(data[0])
 for candidat in data:
-    if candidat[5] == 'Бошқарма бошлиғи':
-        bCandidat.append(candidat)
+    bCandidat.append(candidat)
 
 
 with open('export/candidates.csv', 'w') as fileExport:
