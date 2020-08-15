@@ -27,13 +27,12 @@ class Client:
     def __init__(self):
         self.session = requests.Session()
         self.session.headers = {
-            'User-Agent': 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36',
+            'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36',
             'Accept-Language': 'ru',
         }
         self.result = []
 
     def load_page(self):
-        # url = 'https://ru.newchic.com/men-hoodies-and-sweatshirts-c-3588/?cateNew=2&from=nav&country=226&conversionType=US'
         url = 'https://ikarvon.uz/product-category/elektrika-i-svet/rozetki-i-vykljuchateli/'
         res = self.session.get(url=url)
         res.raise_for_status()
