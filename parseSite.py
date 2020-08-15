@@ -23,7 +23,7 @@ HEADERS = (
 )
 
 
-class Client:
+class SitesParser:
     def __init__(self):
         self.session = requests.Session()
         self.session.headers = {
@@ -60,11 +60,11 @@ class Client:
         name = nameBlock.text
 
         price = block.select_one('span.price span.amount').text
+        if not price:
+            logger.error(f'Price block not found on {url}')
         price = price.replace(' сум', '')
         price = price.replace(',', '')
         price = int(price)
-        if not price:
-            logger.error(f'Price block not found on {url}')
 
         logger.debug('%s, %s, %s', url, name, price)
         logger.debug('=' * 100)
@@ -91,5 +91,5 @@ class Client:
 
 
 if __name__ == '__main__':
-    parser = Client()
+    parser = SitesParser()
     parser.run()
