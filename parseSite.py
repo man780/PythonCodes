@@ -60,6 +60,9 @@ class Client:
         name = nameBlock.text
 
         price = block.select_one('span.price span.amount').text
+        price = price.replace(' сум', '')
+        price = price.replace(',', '')
+        price = int(price)
         if not price:
             logger.error(f'Price block not found on {url}')
 
